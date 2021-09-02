@@ -22,17 +22,22 @@
                         "wallet" => $response['wallet'],
                     );
                     echo json_encode($json);
+                    http_response_code(200);
                 }else{
                     echo json_encode(array(
                         "status" => "failed"    
                     ));
+                    http_response_code(404);
                 }
             }else{
                 echo json_encode(array(
                     "status" => "failed"    
                 ));
+                http_response_code(404);
             }
         }
+    }else{
+        http_response_code(400);
     }
 
 
