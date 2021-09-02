@@ -1,4 +1,4 @@
-# php REST
+# php REST API
 Interfaces with quidax API
 
 ## Features
