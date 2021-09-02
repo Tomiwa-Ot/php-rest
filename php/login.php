@@ -19,7 +19,7 @@
                         "firstname" => $response['firstname'],
                         "lastname" => $response['lastname'],
                         "email" => $response['email'],
-                        "wallet" => $response['wallet'],
+                        "wallet" => $response['wallet']
                     );
                     echo json_encode($json);
                     http_response_code(200);
