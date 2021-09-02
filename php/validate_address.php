@@ -1,10 +1,20 @@
 <?php
-    
+    require 'credentials.php';
+
+    require_once 'jwt/JWT.php';
+    require_once 'jwt/JWK.php';
+    require_once 'jwt/ExpiredException.php';
+    require_once 'jwt/BeforeValidException.php';
+    require_once 'jwt/SignatureInvalidException.php';
+
     require "./vendor/autoload.php";
+
     use Psr\Http\Message\ResponseInterface;
     use GuzzleHttp\Exception\RequestException;
 
-    require 'credentials.php';
+    use \Firebase\JWT\JWT;
+
+    $key = "OBbyzm1zv7m9oJ5wI5rNhuFHX37gPA";
 
     $output = false;
 
