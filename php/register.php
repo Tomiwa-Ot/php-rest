@@ -16,8 +16,6 @@
     use GuzzleHttp\Exception\RequestException;
 
     use \Firebase\JWT\JWT;
-    
-    global $key;
 
     header("Context-Type:application/json");
 
