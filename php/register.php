@@ -1,12 +1,26 @@
 <?php
 
+    
+    require_once 'jwt/JWT.php';
+    require_once 'jwt/JWK.php';
+    require_once 'jwt/ExpiredException.php';
+    require_once 'jwt/BeforeValidException.php';
+    require_once 'jwt/SignatureInvalidException.php';
+
     require "./vendor/autoload.php";
-    use Psr\Http\Message\ResponseInterface;
-    use GuzzleHttp\Exception\RequestException;
+    
     require 'db_connect.php';
     require 'credentials.php';
     
+    use Psr\Http\Message\ResponseInterface;
+    use GuzzleHttp\Exception\RequestException;
+
+    use \Firebase\JWT\JWT;
+    
+    global $key;
+
     header("Context-Type:application/json");
+
     $quid = "";
     $wallet = "";
     
@@ -133,10 +147,15 @@
                 
                 $result = mysqli_query($con, $query);
                 if($result){
+                    $payload = array(
+                        "id" => $quid
+                    );
+                    $jwt = JWT::encode($payload, $key);
                     echo json_encode(array(
                         "status" => "success",
                         "id" => $quid,
-                        "address" => $wallet
+                        "address" => $wallet,
+                        "jwt" => $jwt
                     ));
                   http_response_code(200);
                 }
