@@ -132,7 +132,7 @@
         $pin = $_POST['pin'];
         $pin = password_hash($pin, PASSWORD_DEFAULT);
         
-        $q = "select * from pos_users where email='$email'";
+        $q = "select * from users where email='$email'";
         $r = mysqli_query($con, $q);
         if($r){
             if(mysqli_num_rows($r) > 0){
