@@ -14,8 +14,6 @@
 
     use \Firebase\JWT\JWT;
 
-    global $key;
-
     $output = false;
 
     function validateAddress($address){
