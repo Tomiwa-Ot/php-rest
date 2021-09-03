@@ -7,5 +7,9 @@
     $db = "";
 
     $con = mysqli_connect($hostname, $user, $pwd, $db) or die(mysqli_error());
+    
+    function close_connection($con){
+        mysqli_close($con);
+    }
 
 ?>
