@@ -44,22 +44,43 @@
         $promise->wait();
       
     }
-    
-    if(isset($_POST['address'])){
-        $address = $_POST['address'];
-        validateAddress($address);
-        if($output){
-            echo json_encode(array(
-                "status" => true
-            ));
-            http_response_code(200);
-        }else{
-            echo json_encode(array(
-                "status" => false
-            ));
-            http_response_code(400);
-        }
-    }
 
+    if(isset($_SERVER['HTTP_AUTHORIZATION'])){
+        try{
+            $decoded = JWT::decode($_SERVER['HTTP_AUTHORIZATION'], $key, array('HS256'));
+            if(isset($_POST['address'])){
+                $address = $_POST['address'];
+                validateAddress($address);
+                if($output){
+                    echo json_encode(array(
+                        "status" => true
+                    ));
+                    http_response_code(200);
+                }else{
+                    echo json_encode(array(
+                        "status" => false
+                    ));
+                    http_response_code(400);
+                }
+            }else{
+                echo json_encode(array(
+                    "message" => "Bad Request"
+                ));
+                http_response_code(400);
+            }
+        }catch (Exception $e){
+            echo json_encode(array(
+                "message" => "Access denied",
+            ));
+            http_response_code(401);
+        }
+    }else{
+        echo json_encode(array(
+            "message" => "Access denied",
+        ));
+        http_response_code(401);
+    }    
+
+    
 
 ?>
