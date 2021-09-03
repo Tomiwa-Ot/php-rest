@@ -11,8 +11,6 @@
     use \Firebase\JWT\JWT;
 
     header("Context-Type:application/json");
-
-    global $key;
     
     if(isset($_POST['email']) && isset($_POST['password'])){
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
