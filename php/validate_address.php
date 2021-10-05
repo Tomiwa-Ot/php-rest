@@ -34,8 +34,8 @@
                 $output = $response['data']['valid'] ? true : false;
             },
             function (RequestException $e) {
-                echo $e->getMessage() . "\n";
-                echo $e->getRequest()->getMethod();
+                return $e->getMessage() . "\n";
+                return $e->getRequest()->getMethod();
             }
         );
 
@@ -50,33 +50,33 @@
                 $address = $_POST['address'];
                 validateAddress($address);
                 if($output){
-                    echo json_encode(array(
+                    http_response_code(200);
+                    return json_encode(array(
                         "status" => true
                     ));
-                    http_response_code(200);
                 }else{
-                    echo json_encode(array(
+                    http_response_code(400);
+                    return json_encode(array(
                         "status" => false
                     ));
-                    http_response_code(400);
                 }
             }else{
-                echo json_encode(array(
+                http_response_code(400);
+                return json_encode(array(
                     "message" => "Bad Request"
                 ));
-                http_response_code(400);
             }
         }catch (Exception $e){
-            echo json_encode(array(
+            http_response_code(401);
+            return json_encode(array(
                 "message" => "Access denied",
             ));
-            http_response_code(401);
         }
     }else{
-        echo json_encode(array(
+        http_response_code(401);
+        return json_encode(array(
             "message" => "Access denied",
         ));
-        http_response_code(401);
     }    
 
     

@@ -53,8 +53,8 @@
                 }
             },
             function (RequestException $e) {
-                echo $e->getMessage() . "\n";
-                echo $e->getRequest()->getMethod();
+                return $e->getMessage() . "\n";
+                return $e->getRequest()->getMethod();
             }
         );
 
@@ -83,8 +83,8 @@
                 }
             },
             function (RequestException $e) {
-                echo $e->getMessage() . "\n";
-                echo $e->getRequest()->getMethod();
+                return $e->getMessage() . "\n";
+                return $e->getRequest()->getMethod();
             }
         );
        $promise->wait();
@@ -111,8 +111,8 @@
                 }
             },
             function (RequestException $e) {
-                echo $e->getMessage() . "\n";
-                echo $e->getRequest()->getMethod();
+                return $e->getMessage() . "\n";
+                return $e->getRequest()->getMethod();
             }
         );
        $promise->wait();
@@ -134,10 +134,10 @@
         $r = mysqli_query($con, $q);
         if($r){
             if(mysqli_num_rows($r) > 0){
-                echo json_encode(array(
+                http_response_code(400);
+                return json_encode(array(
                     "status" => "acccount exists"
                 ));
-              http_response_code(400);
             }else{
                 registerOnQuidax($email, $firstname, $lastname);
                 
@@ -149,19 +149,19 @@
                         "id" => $quid
                     );
                     $jwt = JWT::encode($payload, $key);
-                    echo json_encode(array(
+                    http_response_code(200);
+                    return json_encode(array(
                         "status" => "success",
                         "id" => $quid,
                         "address" => $wallet,
                         "jwt" => $jwt
                     ));
-                  http_response_code(200);
                 }
             }
         }
     }else{
-      echo "Method not allowed";
-      http_response_code(405);
+        http_response_code(405);
+      return "Method not allowed";
     }
 
 

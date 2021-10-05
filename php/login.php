@@ -35,19 +35,19 @@
                         "wallet" => $response['wallet'],
                         "jwt" => $jwt
                     );
-                    echo json_encode($json);
                     http_response_code(200);
+                    return json_encode($json);
                 }else{
-                    echo json_encode(array(
+                    http_response_code(404);
+                    return json_encode(array(
                         "status" => "failed"    
                     ));
-                    http_response_code(404);
                 }
             }else{
-                echo json_encode(array(
+                http_response_code(404);
+                return json_encode(array(
                     "status" => "failed"    
                 ));
-                http_response_code(404);
             }
         }
     }else{
