@@ -1,12 +1,12 @@
 <?php
-    include 'db_connect.php';
+    require 'db_connect.php';
     require 'credentials.php';
 
-    require_once 'jwt/JWT.php';
-    require_once 'jwt/JWK.php';
-    require_once 'jwt/ExpiredException.php';
-    require_once 'jwt/BeforeValidException.php';
-    require_once 'jwt/SignatureInvalidException.php';
+    require 'jwt/JWT.php';
+    require 'jwt/JWK.php';
+    require 'jwt/ExpiredException.php';
+    require 'jwt/BeforeValidException.php';
+    require 'jwt/SignatureInvalidException.php';
 
     use \Firebase\JWT\JWT;
 

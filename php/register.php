@@ -1,11 +1,11 @@
 <?php
 
     
-    require_once 'jwt/JWT.php';
-    require_once 'jwt/JWK.php';
-    require_once 'jwt/ExpiredException.php';
-    require_once 'jwt/BeforeValidException.php';
-    require_once 'jwt/SignatureInvalidException.php';
+    require 'jwt/JWT.php';
+    require 'jwt/JWK.php';
+    require 'jwt/ExpiredException.php';
+    require 'jwt/BeforeValidException.php';
+    require 'jwt/SignatureInvalidException.php';
 
     require "./vendor/autoload.php";
     
@@ -120,7 +120,7 @@
     
     
     
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
         $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
