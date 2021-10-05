@@ -10,11 +10,10 @@
 
     use \Firebase\JWT\JWT;
 
-    header("Context-Type:application/json");
     
     if(isset($_POST['email']) && isset($_POST['password'])){
-        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-        $password = $_POST['password'];
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $password = filter_input(INPUT_POST, 'password');
         
         $query = "select * from users where email='$email'";
         $result = mysqli_query($con, $query);

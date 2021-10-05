@@ -47,7 +47,7 @@
         try{
             $decoded = JWT::decode($_SERVER['HTTP_AUTHORIZATION'], $key, array('HS256'));
             if(isset($_POST['address'])){
-                $address = $_POST['address'];
+                $address = filter_input(INPUT_POST, 'address');
                 validateAddress($address);
                 if($output){
                     http_response_code(200);

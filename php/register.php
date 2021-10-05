@@ -17,7 +17,7 @@
 
     use \Firebase\JWT\JWT;
 
-    header("Context-Type:application/json");
+
 
     $quid = "";
     $wallet = "";
@@ -122,12 +122,12 @@
     
     
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-        $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
-        $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
-        $password = $_POST['password'];
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password');
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $pin = $_POST['pin'];
+        $pin = filter_input(INPUT_POST, 'pin');
         $pin = password_hash($pin, PASSWORD_DEFAULT);
         
         $q = "select * from users where email='$email'";
