@@ -62,7 +62,7 @@
     }
     
  
-    function createPaymentAddress($id){
+    function createPaymentAddress($qid){
         global $secret;
         $client = new GuzzleHttp\Client([
             'headers' => [
@@ -71,7 +71,7 @@
             ]
         ]);
         
-        $promise = $client->postAsync("https://www.quidax.com/api/v1/users/$id/wallets/btc/addresses");
+        $promise = $client->postAsync("https://www.quidax.com/api/v1/users/$qid/wallets/btc/addresses");
 
        $promise->then(
             function (ResponseInterface $res) {
@@ -91,7 +91,7 @@
     }
     
     
-    function fetchPaymentAddress($id){
+    function fetchPaymentAddress($qid){
         global $secret;
         sleep(2);
         $client = new GuzzleHttp\Client([
@@ -100,7 +100,7 @@
                 "Content-Type" => "application/json"
             ]
         ]);
-        $promise = $client->getAsync("https://www.quidax.com/api/v1/users/$id/wallets/btc/address");
+        $promise = $client->getAsync("https://www.quidax.com/api/v1/users/$qid/wallets/btc/address");
         
         $promise->then(
             function (ResponseInterface $res) {
