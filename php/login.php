@@ -1,5 +1,5 @@
 <?php
-    require 'db_connect.php';
+    include 'db_connect.php';
     require 'credentials.php';
 
     require_once 'jwt/JWT.php';

@@ -93,7 +93,6 @@
     
     function fetchPaymentAddress($qid){
         global $secret;
-        sleep(2);
         $client = new GuzzleHttp\Client([
             'headers' => [
                 "Authorization" => "Bearer $secret",
