@@ -6,10 +6,10 @@
     $pwd = "";
     $db = "";
 
-    $con = mysqli_connect($hostname, $user, $pwd, $db) or die(mysqli_error());
-    
-    function closeConnection($con){
-        mysqli_close($con);
+    $con = mysqli_connect($hostname, $user, $pwd, $db);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        exit();
     }
-
+    
 ?>

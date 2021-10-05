@@ -120,7 +120,7 @@
     
     
     
-    if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
+    if(isset($_SERVER['REQUEST_METHOD']) && filter_input(INPUT_SERVER, 'REQUEST_METHOD') == 'POST'){
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
         $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
