@@ -1,4 +1,4 @@
 <?php
-  echo "The requested page does not exist.";
-  http_response_code(404);
+http_response_code(404);
+return "The requested page does not exist.";
 ?>
