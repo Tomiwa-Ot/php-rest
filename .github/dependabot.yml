@@ -6,6 +6,6 @@
 version: 2
 updates:
   - package-ecosystem: "composer"
-    directory: "/jwt"
+    directory: "/php/jwt/"
     schedule:
       interval: "weekly"
