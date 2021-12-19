@@ -1,6 +1,4 @@
-# php REST API
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5d86c857b3f44199d521c55dd53411b)](https://app.codacy.com/gh/Tomiwa-Ot/php-rest?utm_source=github.com&utm_medium=referral&utm_content=Tomiwa-Ot/php-rest&utm_campaign=Badge_Grade_Settings)
+# php REST API [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5d86c857b3f44199d521c55dd53411b)](https://app.codacy.com/gh/Tomiwa-Ot/php-rest?utm_source=github.com&utm_medium=referral&utm_content=Tomiwa-Ot/php-rest&utm_campaign=Badge_Grade_Settings)
 
 Interfaces with quidax API
 
